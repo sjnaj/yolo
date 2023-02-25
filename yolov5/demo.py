@@ -1,21 +1,13 @@
 #!/usr/bin/env python
 
-from asyncio import protocols
 import asyncio
-from email.mime import image
 import numpy as np
-from models.experimental import attempt_load
-from utils.general import imread, non_max_suppression, scale_coords
-from utils.torch_utils import select_device
+from utils.general import scale_coords
 import cv2
-import sys
 import onnxruntime
-import argparse
-import multiprocessing
 import time
 import websockets
 
-import torch
 
 
 def letterbox(img, new_shape=(416, 416), color=(114, 114, 114), auto=False, scaleFill=False, scaleup=True):
@@ -222,5 +214,5 @@ if __name__ == "__main__":
     # det = Detector()
     # for i in range(10):
     #     process(1)
-    asyncio.get_event_loop().run_until_complete(websockets.serve(process, '192.168.246.15', 8765))
+    asyncio.get_event_loop().run_until_complete(websockets.serve(process, '192.168.52.1', 8765))
     asyncio.get_event_loop().run_forever()
